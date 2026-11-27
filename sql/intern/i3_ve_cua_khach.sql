@@ -1,1 +1,8 @@
 -- I3. Vé đã xác nhận của khách an.nguyen@example.com (xem đề). Viết MỘT câu SELECT bên dưới, kết thúc bằng dấu ;
+SELECT b.id as booking_id,m.title,s.start_time,b.quantity,b.total_amount
+FROM bookings b
+JOIN customers c ON c.id = b.customer_id
+JOIN showtimes s ON s.id = b.showtime_id
+JOIN movies m ON m.id = s.movie_id
+WHERE b.status = 'CONFIRMED' AND c.email = 'an.nguyen@example.com'
+ORDER BY s.start_time DESC;
