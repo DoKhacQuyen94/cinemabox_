@@ -1,0 +1,23 @@
+package vn.rikkei.cinemabox.showtime;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/showtimes")
+
+public class ShowTimeController {
+
+    private final ShowtimeService showtimeService;
+
+    public ShowTimeController(ShowtimeService showtimeService) {
+        this.showtimeService = showtimeService;
+    }
+
+    @GetMapping("/{id}")
+    public ShowtimeResponse getById(@PathVariable Long id) {
+        return showtimeService.getById(id);
+    }
+}
